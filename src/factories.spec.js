@@ -14,11 +14,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /// <reference path="../../.tmp/typings/angularjs/angular-mocks.d.ts"/>
 describe('smartFactory', function () {
     var FactoryService;
-    var USER_OBJ = { id: 1, name: 'Man Withname' };
+    var USER_OBJ = { id: 1, name: 'Man Withname 1' };
     beforeEach(angular.mock.module('smartFactory'));
     beforeEach(inject(function (_Factory_) {
         FactoryService = _Factory_;
-        FactoryService.define('user').sequence('id').attr('name', [], 'Man Withname');
+        FactoryService.define('user').sequence('id').attr('name', ['id'], function (seq) { return 'Man Withname ' + seq; });
     }));
     var DecoratedUser = (function () {
         function DecoratedUser() {

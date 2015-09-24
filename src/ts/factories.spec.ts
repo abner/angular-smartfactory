@@ -5,17 +5,18 @@ describe('smartFactory', () => {
 
   // Definitions
   var FactoryService: typeof smartFactory.FactoryWrapper;
-  var  USER_OBJ: Object = {id: 1, name: 'Man Withname'};
+  var  USER_OBJ: Object = {id: 1, name: 'Man Withname 1'};
 
   // beforeEach
   beforeEach(angular.mock.module('smartFactory'));
 
   beforeEach(inject((_Factory_: typeof smartFactory.FactoryWrapper) => {
     FactoryService = _Factory_;
-    FactoryService.define('user').sequence('id').attr('name',[], 'Man Withname');
+    FactoryService.define('user').sequence('id').attr('name',['id'], (seq: any) => {return 'Man Withname ' + seq;});
   }));
 
   // class decorated
+  /** only for typescript **/
   @smartFactory.config('user')
   class DecoratedUser {
 
@@ -25,6 +26,7 @@ describe('smartFactory', () => {
     expect(FactoryService.build('user')).toEqual(USER_OBJ);
   });
 
+  /** only for typescript **/
   it('has factory exposed on decorated class', () => {
     expect(FactoryService.for(DecoratedUser).build()).toEqual(USER_OBJ);
   });
