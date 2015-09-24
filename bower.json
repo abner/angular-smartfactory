@@ -1,0 +1,30 @@
+{
+  "name": "factories",
+  "version": "0.0.1",
+  "authors": [
+    "Abner Oliveira <abner.silva@gmail.com>"
+  ],
+  "description": "Factories for testing and prototyping angular projects",
+  "main": "src/factories.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "factories",
+    "factory",
+    "faker"
+  ],
+  "license": "MIT",
+  "homepage": "http://abner.info/factories",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "faker": "Marak/faker.js",
+    "rosie": "~1.2.0"
+  }
+}

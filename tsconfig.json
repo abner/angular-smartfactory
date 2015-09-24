@@ -1,0 +1,27 @@
+{
+    "version": "1.6.2",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "src/"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./node_modules/**/*"
+    ],
+    "files": [
+        "./src/ts/factories.ts"
+    ]
+}
