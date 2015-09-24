@@ -1,5 +1,6 @@
 {
     "version": "1.6.2",
+    "compileOnSave": false,
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
@@ -17,11 +18,20 @@
         "outDir": "src/"
     },
     "filesGlob": [
+        ".tmp/typings/**/*.d.ts",
         "./**/*.ts",
         "./**/*.tsx",
         "!./node_modules/**/*"
     ],
     "files": [
+        ".tmp/typings/angularjs/angular-mocks.d.ts",
+        ".tmp/typings/angularjs/angular.d.ts",
+        ".tmp/typings/faker/faker.d.ts",
+        ".tmp/typings/jasmine/jasmine.d.ts",
+        ".tmp/typings/jquery/jquery.d.ts",
+        ".tmp/typings/tsd.d.ts",
+        "./src/ts/configDecorator.ts",
+        "./src/ts/factories.spec.ts",
         "./src/ts/factories.ts"
     ]
 }

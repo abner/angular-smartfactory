@@ -26,5 +26,11 @@
   "dependencies": {
     "faker": "Marak/faker.js",
     "rosie": "~1.2.0"
+  },
+  "devDependencies": {
+    "angular": "~1.4.6",
+    "angular-mocks": "~1.4.6",
+    "jasmine": "~2.3.4",
+    "jasmine-expect": "~2.0.0-beta2"
   }
 }
