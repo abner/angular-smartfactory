@@ -6,6 +6,16 @@
   "scripts": {
     "test": "gulp"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abner/angular-smartfactory.git"
+  },
+  "keywords": [
+    "angular",
+    "smart",
+    "factory",
+    "factory_girl"
+  ],
   "author": "Ábner Oliveira <abner.silva@gmail.com>",
   "license": "MIT",
   "dependencies": {
