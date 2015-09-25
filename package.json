@@ -1,5 +1,5 @@
 {
-  "name": "smartFactory",
+  "name": "angular-smartfactory",
   "version": "0.0.1",
   "description": "Factories for testing and prototyping angular projects",
   "main": "dist/smartFactory.js",
