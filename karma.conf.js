@@ -1,20 +1,20 @@
 'use strict';
 
+var istanbul = require("browserify-istanbul");
+
 module.exports = function(config) {
 
   var configuration = {
     files: [
-      'test.browserify.js',
+      'src/factories.js',
       'src/factories.spec.js'
     ],
-
-
 
     singleRun: true,
 
     autoWatch: false,
 
-    frameworks: ['jasmine', 'jasmine-matchers', 'browserify'],
+    frameworks: ['jasmine', 'browserify'],
 
     browsers: ['PhantomJS'],
 
@@ -34,12 +34,24 @@ module.exports = function(config) {
     },
     */
     browserify: {
-      debug: true
+      transform: [
+        [
+          istanbul({
+          ignore: ["node_modules/**", "**/*.spec.js"],
+          includeUntested: false,
+          defaultIgnore: true
+          }),
+          { global: true }
+        ]
+      ]
     },
 
+// **** USING BROWSERIFY TOGETHER WITH COVERAGE AS PREPROCESSOR WAS RETURNING ERROR ***
+    //preprocessors: {
+    //  'src/*.js': ['browserify', 'coverage']
+    //},
     preprocessors: {
-      'src/*.js': ['browserify', 'coverage'],
-      'test.browserify.js': ['browserify']
+      'src/*.js': ['browserify']
     },
 
     reporters: ['spec', 'notify', 'coverage'],

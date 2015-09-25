@@ -22,15 +22,20 @@ gulp.task('typescript', [], function() {
     .pipe($.sourcemaps.init())
     .pipe($.typescript(tsProject)).on('error', conf.errorHandler(
       'TypeScript'))
-    .pipe($.sourcemaps.write())
+    .pipe($.sourcemaps.write({sourceRoot: './ts'}))
     .pipe(gulp.dest('./src/'));
 });
 
 gulp.task('browserify', ['typescript'], function() {
-  return gulp.src('./index.browserify.template.js', {
+  //return gulp.src('./index.browserify.template.js', {
+    return gulp.src('./src/*.js', {
       read: false
     })
-    .pipe($.browserify())
+    //TODO excluir também o faker e o rosie e deixar a cargo da definição de dependência
+    .pipe($.browserify({
+      exclude: ['angular', 'angular-mocks/ngMock', 'faker', 'rosie'],
+      expose: ['factories']
+    }))
     .pipe($.sourcemaps.init())
     .pipe($.rename('smartFactory.js'))
     .pipe($.sourcemaps.write())

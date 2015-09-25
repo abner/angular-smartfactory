@@ -5,6 +5,11 @@
 
 
 import * as smartFactory from './factories';
+import * as angular from 'angular';
+
+import ngMock = require('angular-mocks/ngMock');
+
+console.log(ngMock);
 // <reference path="./factories.ts" />
 
 

@@ -3,7 +3,8 @@
 
 var Factory = require('rosie').Factory;
 var faker = require('faker');
-declare var angular: ng.IAngularStatic;
+
+import * as angular from 'angular';
 
 //import * as smartFactoryDecorator from './configDecorator';
 

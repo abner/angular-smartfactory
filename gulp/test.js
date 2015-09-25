@@ -27,3 +27,22 @@ gulp.task('retest', [], function(done) {
 gulp.task('test:auto', ['scripts', 'watch'], function(done) {
   runTests(false, done);
 });
+
+
+gulp.task('cov', ['test'], function(){
+  //var remapIstanbul = require('remap-istanbul');
+  //remapIstanbul('coverage/PhantomJS 1.9.8 (Linux 0.0.0)/coverage-final.json', {
+  //    'json': 'coverage-ts.json'
+  //});
+  var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
+ 
+   gulp.src('coverage/PhantomJS 1.9.8 (Linux 0.0.0)/coverage-final.json')
+        .pipe(remapIstanbul({
+            reports: {
+                'json': 'coverage/remaped/coverage.json',
+                'html': 'coverage/remaped/'
+            }
+        }))
+        .pipe(gulp.src('src/ts', { read: false}));
+});
+

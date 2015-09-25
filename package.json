@@ -26,6 +26,7 @@
   "devDependencies": {
     "angular": "^1.4.6",
     "angular-mocks": "^1.4.6",
+    "browserify-istanbul": "^0.2.1",
     "del": "~1.2.0",
     "gulp": "~3.9.0",
     "gulp-browserify": "^0.5.1",
