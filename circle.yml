@@ -1,8 +1,6 @@
 general:
   artifacts:
-      - "coverage/"
+      - "coverage"
 dependencies:
   pre:
       - npm update
-  post:
-      - mv coverage $

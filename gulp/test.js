@@ -20,6 +20,10 @@ gulp.task('test', ['scripts'], function(done) {
   runTests(true, done);
 });
 
+gulp.task('retest', [], function(done) {
+  runTests(true, done);
+});
+
 gulp.task('test:auto', ['scripts', 'watch'], function(done) {
   runTests(false, done);
 });
