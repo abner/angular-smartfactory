@@ -1,4 +1,4 @@
-# factories
+# angular-smartfactory
 
 Smart Factories to angular testing and prototyping
 
