@@ -86,7 +86,7 @@ module smartFactory {
     }
 
     attr(name: string, dependenciesOrValue: any | string[], value?: any): FactoryWrapper {
-      if(dependenciesOrValue.prop && dependenciesOrValue.prop.constructor === Array){
+      if(dependenciesOrValue && dependenciesOrValue.constructor === Array){
         this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).attr(name, dependenciesOrValue, value);
       } else {
         this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).attr(name, [], dependenciesOrValue);
@@ -96,9 +96,9 @@ module smartFactory {
     }
 
     sequence(name: string, dependencies?: string[], builder?: Function) : FactoryWrapper {
-      if ((typeof dependencies) === 'undefined' && (typeof builder) === 'undefined') {
+      if (dependencies === undefined && builder === undefined) {
         this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name);
-      } else if((typeof dependencies) === 'undefined') {
+      } else if(dependencies === undefined) {
         this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name, [], builder || null);
       } else {
         this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name, dependencies, builder || null);

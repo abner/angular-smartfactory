@@ -43243,12 +43243,25 @@ var smartFactory;
                 throw new Error('no factory registered for ' + target.toString() + ' please check!');
             }
         };
-        FactoryWrapper.prototype.attr = function (name, dependencies, value) {
-            this.wrappedFactory = this.wrappedFactory.attr(name, dependencies, value);
+        FactoryWrapper.prototype.attr = function (name, dependenciesOrValue, value) {
+            if (dependenciesOrValue && dependenciesOrValue.constructor === Array) {
+                this.wrappedFactory = this.wrappedFactory.attr(name, dependenciesOrValue, value);
+            }
+            else {
+                this.wrappedFactory = this.wrappedFactory.attr(name, [], dependenciesOrValue);
+            }
             return this;
         };
         FactoryWrapper.prototype.sequence = function (name, dependencies, builder) {
-            this.wrappedFactory = this.wrappedFactory.sequence(name, dependencies, builder);
+            if (dependencies === undefined && builder === undefined) {
+                this.wrappedFactory = this.wrappedFactory.sequence(name);
+            }
+            else if (dependencies === undefined) {
+                this.wrappedFactory = this.wrappedFactory.sequence(name, [], builder || null);
+            }
+            else {
+                this.wrappedFactory = this.wrappedFactory.sequence(name, dependencies, builder || null);
+            }
             return this;
         };
         FactoryWrapper.factory = Factory;

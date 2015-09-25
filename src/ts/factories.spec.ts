@@ -36,6 +36,11 @@ describe('smartFactory', () => {
 
   }
 
+  it('defines factories throung Factory without dependencies argument', () => {
+    FactoryService.define('usersimple').attr('name', 'John');
+    expect(FactoryService.build('usersimple')).toEqual({ name: 'John' });
+  });
+
   it('defines Factory', () => {
     expect(FactoryService.build('user')).toEqual(USER_OBJ);
   });

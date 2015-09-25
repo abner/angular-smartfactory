@@ -34,7 +34,6 @@
         "./src/ts/configDecorator.ts",
         "./src/ts/factories.spec.ts",
         "./src/ts/factories.ts",
-        "./src/ts/faker.d.ts",
-        "./src/ts/test.ts"
+        "./src/ts/faker.d.ts"
     ]
 }

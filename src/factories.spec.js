@@ -31,6 +31,10 @@ describe('smartFactory', function () {
         ], DecoratedUser);
         return DecoratedUser;
     })();
+    it('defines factories throung Factory without dependencies argument', function () {
+        FactoryService.define('usersimple').attr('name', 'John');
+        expect(FactoryService.build('usersimple')).toEqual({ name: 'John' });
+    });
     it('defines Factory', function () {
         expect(FactoryService.build('user')).toEqual(USER_OBJ);
     });
