@@ -61,11 +61,11 @@ module smartFactory {
       return this.factory.build(name, attributes, options);
     }
 
-    public static buildList(name: string, size: number, attributes: any[], options: Object): Object[] {
+    public static buildList(name: string, size: number, attributes?: any[], options?: Object): Object[] {
       return this.factory.build(name, size, attributes, options);
     }
 
-    public static attributes(attributes: Object, options: Object): Object {
+    public static attributes(attributes: Object, options?: Object): Object {
       return this.factory.attributes(attributes, options);
     }
 
@@ -85,13 +85,24 @@ module smartFactory {
       }
     }
 
-    attr(name: string, dependencies: string[], value: any): FactoryWrapper {
-      this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).attr(name, dependencies, value);
+    attr(name: string, dependenciesOrValue: any | string[], value?: any): FactoryWrapper {
+      if(dependenciesOrValue.prop && dependenciesOrValue.prop.constructor === Array){
+        this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).attr(name, dependenciesOrValue, value);
+      } else {
+        this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).attr(name, [], dependenciesOrValue);
+      }
+
       return this;
     }
 
     sequence(name: string, dependencies?: string[], builder?: Function) : FactoryWrapper {
-      this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name, dependencies, builder);
+      if ((typeof dependencies) === 'undefined' && (typeof builder) === 'undefined') {
+        this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name);
+      } else if((typeof dependencies) === 'undefined') {
+        this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name, [], builder || null);
+      } else {
+        this.wrappedFactory = (<FactoryWrapper>this.wrappedFactory).sequence(name, dependencies, builder || null);
+      }
       return this;
     }
 
