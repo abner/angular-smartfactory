@@ -2,7 +2,7 @@
   "name": "smartFactory",
   "version": "0.0.1",
   "description": "Factories for testing and prototyping angular projects",
-  "main": "src/factories.js",
+  "main": "dist/smartFactory.js",
   "scripts": {
     "test": "gulp"
   },

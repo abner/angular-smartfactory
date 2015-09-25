@@ -114,13 +114,13 @@ if ((typeof(angular) != 'undefined')) {
 } else {
   if(console && console.error){
     if(typeof(angular) == 'undefined'){
-        console.error('ngFactories not registered beacuse angular is missing');
+        console.error('smartFactory not registered beacuse angular is missing');
     }
     if(typeof(faker) == 'undefined'){
-        console.error('ngFactories not registered beacuse faker.js is missing');
+        console.error('smartFactory not registered beacuse faker.js is missing');
     }
     if(typeof(Factory) == 'undefined'){
-        console.error('ngFactories not registered beacuse angular rosie is missing');
+        console.error('smartFactory not registered beacuse angular rosie is missing');
     }
   }
 }
