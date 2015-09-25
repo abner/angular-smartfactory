@@ -1,0 +1,3 @@
+dependencies:
+  pre:
+      - rm -Rf ./node_modules
