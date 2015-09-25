@@ -2,6 +2,7 @@
 /// <reference path="../../.tmp/typings/requirejs/require.d.ts" />
 var Factory = require('rosie').Factory;
 var faker = require('faker');
+//import * as smartFactoryDecorator from './configDecorator';
 var smartFactory;
 (function (smartFactory) {
     function config(factoryName) {
@@ -80,6 +81,7 @@ var smartFactory;
     smartFactory.Service = Service;
 })(smartFactory || (smartFactory = {}));
 if ((typeof (angular) != 'undefined')) {
+    console.log('BLIBLIBLI');
     angular.module('smartFactory', []).service('Factory', smartFactory.Service);
 }
 else {

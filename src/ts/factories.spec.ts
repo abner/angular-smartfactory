@@ -1,7 +1,21 @@
 /// <reference path="../../.tmp/typings/jasmine/jasmine.d.ts"/>
 /// <reference path="../../.tmp/typings/angularjs/angular.d.ts"/>
 /// <reference path="../../.tmp/typings/angularjs/angular-mocks.d.ts"/>
+/// <reference path="../../.tmp/typings/requirejs/require.d.ts"/>
+
+
+import * as smartFactory from './factories';
+// <reference path="./factories.ts" />
+
+
+
+//smartFactory.faker = faker;
+//smartFactory.Factory = Factory;
+
+
 describe('smartFactory', () => {
+
+
 
   // Definitions
   var FactoryService: typeof smartFactory.FactoryWrapper;

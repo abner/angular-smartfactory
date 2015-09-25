@@ -1,6 +1,6 @@
 {
     "version": "1.6.2",
-    "compileOnSave": false,
+    "compileOnSave": true,
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
@@ -29,9 +29,12 @@
         ".tmp/typings/faker/faker.d.ts",
         ".tmp/typings/jasmine/jasmine.d.ts",
         ".tmp/typings/jquery/jquery.d.ts",
+        ".tmp/typings/requirejs/require.d.ts",
         ".tmp/typings/tsd.d.ts",
         "./src/ts/configDecorator.ts",
         "./src/ts/factories.spec.ts",
-        "./src/ts/factories.ts"
+        "./src/ts/factories.ts",
+        "./src/ts/faker.d.ts",
+        "./src/ts/test.ts"
     ]
 }

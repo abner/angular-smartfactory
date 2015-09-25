@@ -1,11 +1,11 @@
 {
-  "name": "factories",
+  "name": "smartFactory",
   "version": "0.0.1",
   "authors": [
     "Abner Oliveira <abner.silva@gmail.com>"
   ],
   "description": "Factories for testing and prototyping angular projects",
-  "main": "src/factories.js",
+  "main": "dist/smartFactory.js",
   "moduleType": [
     "globals"
   ],
@@ -23,10 +23,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "faker": "Marak/faker.js",
-    "rosie": "~1.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "angular": "~1.4.6",
     "angular-mocks": "~1.4.6",

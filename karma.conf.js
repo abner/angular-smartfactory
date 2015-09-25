@@ -1,27 +1,20 @@
 'use strict';
 
-var path = require('path');
-var conf = require('./gulp/conf');
-
 module.exports = function(config) {
 
   var configuration = {
     files: [
-      'bower_components/faker/build/build/faker.js',
-      'bower_components/rosie/src/rosie.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/jasmine-expect/dist/jasmine-matchers.js',
-      'src/factories.js',
-      'src/configDecorator.js',
+      'test.browserify.js',
       'src/factories.spec.js'
     ],
+
+
 
     singleRun: true,
 
     autoWatch: false,
 
-    frameworks: ['jasmine', 'jasmine-matchers'],
+    frameworks: ['jasmine', 'jasmine-matchers', 'browserify'],
 
     browsers: ['PhantomJS'],
 
@@ -29,11 +22,25 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-jasmine-matchers',
-      'karma-ng-html2js-preprocessor',
       'karma-coverage',
       'karma-spec-reporter',
-      'karma-notify-reporter'
+      'karma-notify-reporter',
+      'karma-browserify'
     ],
+
+    /*
+    commonjsPreprocessor: {
+      modulesRoot: 'src'
+    },
+    */
+    browserify: {
+      debug: true
+    },
+
+    preprocessors: {
+      'src/*.js': ['browserify'],
+      'test.browserify.js': ['browserify']
+    },
 
     reporters: ['spec', 'notify', 'coverage'],
 

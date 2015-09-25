@@ -1,9 +1,50 @@
-declare var Factory;
-declare var faker;
+/// <reference path="../../.tmp/typings/angularjs/angular.d.ts" />
+/// <reference path="../../.tmp/typings/requirejs/require.d.ts" />
+
+var Factory = require('rosie').Factory;
+var faker = require('faker');
+declare var angular: ng.IAngularStatic;
+
+//import * as smartFactoryDecorator from './configDecorator';
 
 module smartFactory {
 
-  export class FactoryWrapper{
+  export function config(factoryName: string) {
+    return (target: any) => {
+      (<smartFactory.IConstructorWithFactory>target).__rosieFactoryName__ = factoryName;
+
+      (<smartFactory.IConstructorWithFactory>target).factory = {
+        list: function(size: number, overrideObj?: Object) {
+          return Factory.buildList(target.__rosieFactoryName__, size, overrideObj);
+        },
+        build: function(overrideObj?: Object) {
+          return Factory.build(target.__rosieFactoryName__, overrideObj);
+        }
+      };
+    };
+  }
+
+  export interface FactoryFacilities {
+    list(size: number, overrideObj?: Object);
+    build(overrideObj?: Object);
+  }
+
+  export interface IConstructorWithFactory {
+    __rosieFactoryName__: string;
+    factory: any;
+  }
+
+  export class FakerWrapper {
+    static faker: any = faker;
+
+
+
+    public static findName(): string {
+      return this.faker.name.findName();
+    }
+  }
+
+  export class FactoryWrapper {
     static factory: any = Factory;
 
     wrappedFactory: any;
@@ -36,7 +77,7 @@ module smartFactory {
       return this.factory.extend(name);
     }
 
-    public static for(target: any) : smartFactory.FactoryFacilities {
+    public static for(target: any) : FactoryFacilities {
       if(((<any>target).__rosieFactoryName__) &&  ((<any>target).factory)) {
         return (<smartFactory.IConstructorWithFactory>(<any>target)).factory;
       } else {
@@ -67,18 +108,21 @@ module smartFactory {
   }
 
 }
-if(angular && faker && Factory){
+
+if ((typeof(angular) != 'undefined')) {
   angular.module('smartFactory', []).service('Factory', smartFactory.Service);
 } else {
   if(console && console.error){
-    if(!angular){
+    if(typeof(angular) == 'undefined'){
         console.error('ngFactories not registered beacuse angular is missing');
     }
-    if(!faker){
+    if(typeof(faker) == 'undefined'){
         console.error('ngFactories not registered beacuse faker.js is missing');
     }
-    if(!Factory){
+    if(typeof(Factory) == 'undefined'){
         console.error('ngFactories not registered beacuse angular rosie is missing');
     }
   }
 }
+
+export = smartFactory;

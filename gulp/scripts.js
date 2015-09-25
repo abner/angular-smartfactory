@@ -6,9 +6,10 @@ var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')();
 
+
 var tsProject = $.typescript.createProject('./tsconfig.json');
 
-gulp.task('transpile', [], function() {
+gulp.task('typescript', [], function() {
   return gulp.src(
       [
         path.join(conf.paths.src, './ts/*.ts')
@@ -22,5 +23,18 @@ gulp.task('transpile', [], function() {
     .pipe(gulp.dest('./src/'));
 });
 
+gulp.task('browserify', ['typescript'], function() {
+  return gulp.src('./index.browserify.template.js', {
+      read: false
+    })
+    .pipe($.browserify())
+    .pipe($.rename('smartFactory.js'))
+    .pipe(gulp.dest('./dist'))
+    .pipe($.uglify())
+    .pipe($.rename('smartFactory.min.js'))
+    .pipe(gulp.dest('./dist'));
 
-gulp.task('scripts', ['tsd:install', 'transpile'], function() {});
+});
+
+
+gulp.task('scripts', ['browserify'], function() {});

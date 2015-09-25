@@ -1,3 +1,7 @@
+/// <reference path="../../.tmp/typings/jasmine/jasmine.d.ts"/>
+/// <reference path="../../.tmp/typings/angularjs/angular.d.ts"/>
+/// <reference path="../../.tmp/typings/angularjs/angular-mocks.d.ts"/>
+/// <reference path="../../.tmp/typings/requirejs/require.d.ts"/>
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -9,9 +13,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/// <reference path="../../.tmp/typings/jasmine/jasmine.d.ts"/>
-/// <reference path="../../.tmp/typings/angularjs/angular.d.ts"/>
-/// <reference path="../../.tmp/typings/angularjs/angular-mocks.d.ts"/>
+var smartFactory = require('./factories');
 describe('smartFactory', function () {
     var FactoryService;
     var USER_OBJ = { id: 1, name: 'Man Withname 1' };
