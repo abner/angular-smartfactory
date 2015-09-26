@@ -4,6 +4,7 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
         "isolatedModules": false,
         "jsx": "react",
         "experimentalDecorators": true,
@@ -17,21 +18,19 @@
         "outDir": "src/"
     },
     "filesGlob": [
-        ".tmp/typings/tsd.d.ts",
         ".tmp/typings/**/*.d.ts",
-        "!.dist/typings/**/*.d.ts",
         "./**/*.ts",
         "./**/*.tsx",
         "!./node_modules/**/*"
     ],
     "files": [
-        ".tmp/typings/tsd.d.ts",
         ".tmp/typings/angularjs/angular-mocks.d.ts",
         ".tmp/typings/angularjs/angular.d.ts",
         ".tmp/typings/faker/faker.d.ts",
         ".tmp/typings/jasmine/jasmine.d.ts",
         ".tmp/typings/jquery/jquery.d.ts",
         ".tmp/typings/requirejs/require.d.ts",
+        ".tmp/typings/tsd.d.ts",
         "./src/ts/smartFactory.d.ts",
         "./src/ts/smartFactory.spec.ts",
         "./src/ts/smartFactory.ts",
