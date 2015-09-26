@@ -1,2 +1,2 @@
-require('./smartFactory');
+require('./src/smartFactory');
 module.exports = smartFactory;

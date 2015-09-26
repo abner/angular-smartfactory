@@ -6,14 +6,33 @@ var conf = require('./conf');
 
 var karma = require('karma');
 
+var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
+
+
 function runTests(singleRun, done) {
-  karma.server.start({
+  var karmaServer = new karma.Server({
     configFile: path.join(__dirname, '/../karma.conf.js'),
     singleRun: singleRun,
     autoWatch: !singleRun
-  }, function() {
+  }, function(exitCode) {
     done();
+    process.exit(exitCode);
   });
+
+  karmaServer.on('run_complete', function(browser) {
+    console.log("REMAPING...");
+    gulp.src('coverage/PhantomJS 1.9.8 (Linux 0.0.0)/coverage-final.json')
+      .pipe(remapIstanbul({
+        reports: {
+          'json': 'coverage/remaped/coverage.json',
+          'html': 'coverage/remaped/'
+        }
+      }));
+
+  });
+
+  karmaServer.start();
+
 }
 
 gulp.task('test', ['scripts'], function(done) {
@@ -27,22 +46,3 @@ gulp.task('retest', [], function(done) {
 gulp.task('test:auto', ['scripts', 'watch'], function(done) {
   runTests(false, done);
 });
-
-
-gulp.task('cov', ['test'], function(){
-  //var remapIstanbul = require('remap-istanbul');
-  //remapIstanbul('coverage/PhantomJS 1.9.8 (Linux 0.0.0)/coverage-final.json', {
-  //    'json': 'coverage-ts.json'
-  //});
-  var remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
- 
-   gulp.src('coverage/PhantomJS 1.9.8 (Linux 0.0.0)/coverage-final.json')
-        .pipe(remapIstanbul({
-            reports: {
-                'json': 'coverage/remaped/coverage.json',
-                'html': 'coverage/remaped/'
-            }
-        }))
-        .pipe(gulp.src('src/ts', { read: false}));
-});
-

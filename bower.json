@@ -5,7 +5,7 @@
     "Abner Oliveira <abner.silva@gmail.com>"
   ],
   "description": "Factories for testing and prototyping angular projects",
-  "main": "dist/smartFactory.js",
+  "main": "src/smartFactory.js",
   "moduleType": [
     "globals"
   ],

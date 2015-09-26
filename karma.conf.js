@@ -1,20 +1,24 @@
 'use strict';
 
-var istanbul = require("browserify-istanbul");
 
 module.exports = function(config) {
 
   var configuration = {
     files: [
-      'src/factories.js',
-      'src/factories.spec.js'
+      './node_modules/angular/angular.js',
+      './node_modules/angular-mocks/angular-mocks.js',
+      './node_modules/rosie/src/rosie.js',
+      './node_modules/faker/build/build/faker.js',
+      'src/smartFactory.js',
+      'src/smartFactoryConfig.js',
+      'src/smartFactory.spec.js'
     ],
 
     singleRun: true,
 
     autoWatch: false,
 
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
     browsers: ['PhantomJS'],
 
@@ -24,34 +28,12 @@ module.exports = function(config) {
       'karma-jasmine-matchers',
       'karma-coverage',
       'karma-spec-reporter',
-      'karma-notify-reporter',
-      'karma-browserify'
+      'karma-notify-reporter'
     ],
 
-    /*
-    commonjsPreprocessor: {
-      modulesRoot: 'src'
-    },
-    */
-    browserify: {
-      transform: [
-        [
-          istanbul({
-          ignore: ["node_modules/**", "**/*.spec.js"],
-          includeUntested: false,
-          defaultIgnore: true
-          }),
-          { global: true }
-        ]
-      ]
-    },
 
-// **** USING BROWSERIFY TOGETHER WITH COVERAGE AS PREPROCESSOR WAS RETURNING ERROR ***
-    //preprocessors: {
-    //  'src/*.js': ['browserify', 'coverage']
-    //},
     preprocessors: {
-      'src/*.js': ['browserify']
+      'src/*.js': ['coverage']
     },
 
     reporters: ['spec', 'notify', 'coverage'],

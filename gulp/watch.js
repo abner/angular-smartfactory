@@ -5,13 +5,13 @@ var gulp = require('gulp');
 var conf = require('./conf');
 
 
-gulp.task('watch', [] , function () {
+gulp.task('watch', [], function() {
 
 
   gulp.watch([
     path.join(conf.paths.src, '/**/*.ts')
   ], function(event) {
-    gulp.start('transpile');  
+    gulp.start('typescript');
   });
 
 });
