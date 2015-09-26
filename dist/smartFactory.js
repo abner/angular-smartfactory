@@ -5,7 +5,6 @@ var Factory = require('rosie').Factory;
 var faker = require('faker');
 var angular = require('angular');
 var smartFactory;
-console.log("HERE 2");
 (function (smartFactory) {
     function config(factoryName) {
         return function (target) {
