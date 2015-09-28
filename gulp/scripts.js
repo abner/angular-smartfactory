@@ -15,7 +15,6 @@ var tsProject = $.typescript.createProject('./tsconfig.json');
 gulp.task('typescript', [], function() {
   return gulp.src(
       [
-        path.join(conf.paths.src, './typings/*.ts'),
         path.join(conf.paths.src, './ts/*.ts'),
         path.join(conf.paths.tmp, 'typings/tsd.d.ts')
       ])

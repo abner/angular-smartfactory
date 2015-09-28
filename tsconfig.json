@@ -30,11 +30,11 @@
         ".tmp/typings/jasmine/jasmine.d.ts",
         ".tmp/typings/jquery/jquery.d.ts",
         ".tmp/typings/requirejs/require.d.ts",
+        ".tmp/typings/rosie/rosie.d.ts",
         ".tmp/typings/tsd.d.ts",
         "./src/ts/smartFactory.d.ts",
         "./src/ts/smartFactory.spec.ts",
         "./src/ts/smartFactory.ts",
-        "./src/ts/smartFactoryConfig.ts",
-        "./src/typings/rosie.d.ts"
+        "./src/ts/smartFactoryConfig.ts"
     ]
 }
