@@ -1,12 +1,12 @@
 describe('smartFactory', () => {
   // Definitions
-  var FactoryService: smartFactory.IFactoryServiceStatic;
+  var FactoryService: smartFactory.IFactoryWithFacilities;
   var  USER_OBJ: Object;
 
   // beforeEach
   beforeEach(angular.mock.module('smartFactory'));
 
-  beforeEach(inject((_Factory_: smartFactory.IFactoryServiceStatic) => {
+  beforeEach(inject((_Factory_: smartFactory.IFactoryWithFacilities) => {
     USER_OBJ = {id: 1, name: 'Man Withname 1'};
     FactoryService = _Factory_;
     FactoryService.define('user').sequence('id').attr('name', ['id'], (seq: any) => { return 'Man Withname ' + seq; });

@@ -15,6 +15,7 @@ var tsProject = $.typescript.createProject('./tsconfig.json');
 gulp.task('typescript', [], function() {
   return gulp.src(
       [
+        path.join(conf.paths.src, './typings/*.ts'),
         path.join(conf.paths.src, './ts/*.ts'),
         path.join(conf.paths.tmp, 'typings/tsd.d.ts')
       ])
@@ -28,7 +29,7 @@ gulp.task('typescript', [], function() {
     .pipe($.sourcemaps.write({
       sourceRoot: './ts'
     }))
-    .pipe(gulp.dest('./src/'));
+    .pipe(gulp.dest('./src'));
 });
 
 gulp.task('scripts', ['typescript'], function() {});

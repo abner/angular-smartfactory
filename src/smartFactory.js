@@ -1,28 +1,7 @@
 (function (angular, rosieFactory, faker) {
-    var FactoryService = (function () {
-        function FactoryService() {
-        }
-        FactoryService.define = function (name, constructor) {
-            var fac = new FactoryService();
-            fac.wrappedFactory = this.factory.define(name, constructor);
-            return fac;
-        };
-        FactoryService.build = function (name, attributes, options) {
-            return this.factory.build(name, attributes, options);
-        };
-        FactoryService.buildList = function (name, size, attributes, options) {
-            return this.factory.build(name, size, attributes, options);
-        };
-        FactoryService.attributes = function (attributes, options) {
-            return this.factory.attributes(attributes, options);
-        };
-        FactoryService.options = function (options) {
-            return this.factory.options(options);
-        };
-        FactoryService.extend = function (name) {
-            return this.factory.extend(name);
-        };
-        FactoryService.for = function (target) {
+    /* tslint:enable */
+    function constructorFactory() {
+        rosieFactory.for = function (target) {
             if ((target.__rosieFactoryName__) && (target.factory)) {
                 return target.factory;
             }
@@ -30,36 +9,10 @@
                 throw new Error('no factory registered for ' + target.toString() + ' please check!');
             }
         };
-        FactoryService.prototype.attr = function (name, dependenciesOrValue, value) {
-            if (dependenciesOrValue && dependenciesOrValue.constructor === Array) {
-                this.wrappedFactory = this.wrappedFactory.attr(name, dependenciesOrValue, value);
-            }
-            else {
-                this.wrappedFactory = this.wrappedFactory.attr(name, [], dependenciesOrValue);
-            }
-            return this;
-        };
-        FactoryService.prototype.sequence = function (name, dependencies, builder) {
-            if (dependencies === undefined && builder === undefined) {
-                this.wrappedFactory = this.wrappedFactory.sequence(name);
-            }
-            else if (dependencies === undefined) {
-                this.wrappedFactory = this.wrappedFactory.sequence(name, [], builder || null);
-            }
-            else {
-                this.wrappedFactory = this.wrappedFactory.sequence(name, dependencies, builder || null);
-            }
-            return this;
-        };
-        FactoryService.factory = rosieFactory;
-        FactoryService.faker = faker;
-        return FactoryService;
-    })();
-    var ServiceConstructor = (function () {
-        function ServiceConstructor() {
-            return FactoryService;
-        }
-        return ServiceConstructor;
-    })();
-    angular.module('smartFactory', []).service('Factory', ServiceConstructor);
+        return rosieFactory;
+    }
+    angular.module('smartFactory', []).service('Factory', constructorFactory);
+    angular.module('smartFactory').service('faker', faker);
 })(angular, Factory, faker);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNtYXJ0RmFjdG9yeS50cyJdLCJuYW1lcyI6WyJjb25zdHJ1Y3RvckZhY3RvcnkiXSwibWFwcGluZ3MiOiJBQUtBLENBQUMsVUFBVSxPQUEwQixFQUFFLFlBQWlCLEVBQUUsS0FBVTtJQUNwRSxtQkFBbUI7SUFFakI7UUFDRUEsWUFBWUEsQ0FBQ0EsR0FBR0EsR0FBR0EsVUFBU0EsTUFBV0E7WUFDckMsRUFBRSxDQUFDLENBQUMsQ0FBTyxNQUFPLENBQUMsb0JBQW9CLENBQUMsSUFBSyxDQUFPLE1BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUM7Z0JBQ3JFLE1BQU0sQ0FBOEMsTUFBUSxDQUFDLE9BQU8sQ0FBQztZQUN2RSxDQUFDO1lBQUMsSUFBSSxDQUFDLENBQUM7Z0JBQ04sTUFBTSxJQUFJLEtBQUssQ0FBQyw0QkFBNEIsR0FBRyxNQUFNLENBQUMsUUFBUSxFQUFFLEdBQUcsZ0JBQWdCLENBQUMsQ0FBQztZQUN2RixDQUFDO1FBQ0gsQ0FBQyxDQUFBQTtRQUNEQSxNQUFNQSxDQUFDQSxZQUFZQSxDQUFDQTtJQUN0QkEsQ0FBQ0E7SUFFRCxPQUFPLENBQUMsTUFBTSxDQUFDLGNBQWMsRUFBRSxFQUFFLENBQUMsQ0FBQyxPQUFPLENBQUMsU0FBUyxFQUFFLGtCQUFrQixDQUFDLENBQUM7SUFDMUUsT0FBTyxDQUFDLE1BQU0sQ0FBQyxjQUFjLENBQUMsQ0FBQyxPQUFPLENBQUMsT0FBTyxFQUFFLEtBQUssQ0FBQyxDQUFDO0FBRXpELENBQUMsQ0FBQyxDQUFDLE9BQU8sRUFBRSxPQUFPLEVBQUUsS0FBSyxDQUFDLENBQUMiLCJmaWxlIjoic21hcnRGYWN0b3J5LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZGVjbGFyZSB2YXIgYW5ndWxhcjogbmcuSUFuZ3VsYXJTdGF0aWM7XG5kZWNsYXJlIHZhciBGYWN0b3J5OiBhbnk7XG5kZWNsYXJlIHZhciBmYWtlcjogYW55O1xuXG4vKiB0c2xpbnQ6ZGlzYWJsZSAqL1xuKGZ1bmN0aW9uIChhbmd1bGFyOiBuZy5JQW5ndWxhclN0YXRpYywgcm9zaWVGYWN0b3J5OiBhbnksIGZha2VyOiBhbnkpOiB2b2lkIHtcbi8qIHRzbGludDplbmFibGUgKi9cblxuICBmdW5jdGlvbiBjb25zdHJ1Y3RvckZhY3RvcnkoKSB7XG4gICAgcm9zaWVGYWN0b3J5LmZvciA9IGZ1bmN0aW9uKHRhcmdldDogYW55KTogcm9zaWUuSUZhY3Rvcnkge1xuICAgICAgaWYgKCgoPGFueT50YXJnZXQpLl9fcm9zaWVGYWN0b3J5TmFtZV9fKSAmJiAgKCg8YW55PnRhcmdldCkuZmFjdG9yeSkpIHtcbiAgICAgICAgcmV0dXJuICg8c21hcnRGYWN0b3J5LklDb25zdHJ1Y3RvcldpdGhGYWN0b3J5Pig8YW55PnRhcmdldCkpLmZhY3Rvcnk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ25vIGZhY3RvcnkgcmVnaXN0ZXJlZCBmb3IgJyArIHRhcmdldC50b1N0cmluZygpICsgJyBwbGVhc2UgY2hlY2shJyk7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiByb3NpZUZhY3Rvcnk7XG4gIH1cblxuICBhbmd1bGFyLm1vZHVsZSgnc21hcnRGYWN0b3J5JywgW10pLnNlcnZpY2UoJ0ZhY3RvcnknLCBjb25zdHJ1Y3RvckZhY3RvcnkpO1xuICBhbmd1bGFyLm1vZHVsZSgnc21hcnRGYWN0b3J5Jykuc2VydmljZSgnZmFrZXInLCBmYWtlcik7XG5cbn0pKGFuZ3VsYXIsIEZhY3RvcnksIGZha2VyKTtcbiJdLCJzb3VyY2VSb290IjoiLi90cyJ9

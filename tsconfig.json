@@ -34,6 +34,7 @@
         "./src/ts/smartFactory.d.ts",
         "./src/ts/smartFactory.spec.ts",
         "./src/ts/smartFactory.ts",
-        "./src/ts/smartFactoryConfig.ts"
+        "./src/ts/smartFactoryConfig.ts",
+        "./src/typings/rosie.d.ts"
     ]
 }
