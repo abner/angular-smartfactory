@@ -14,6 +14,21 @@ Thanks  to https://github.com/Marak and rosiejs TEAM to these amazings libraries
 -------------------------
 How to use:
 
+Install smartFactory using bower or npm:
+
+`bower install angular-smartfactory`
+
+or 
+
+`npm install angular-smartfactory`
+
+
+Add the smartFactory.js file to you page (if you are using the factories in your controllers or services) and/or to your karma conf files (it using for tests):
+
+```html
+<script type="text/javascript" src="bower_components/angular-smartfactory/src/smartFactory.js"></script>
+```
+
 If you want use Factory and Faker while prototyping or testing you could add smartFactory as a dependency to your application,
 so you can define factories to use in your controllers, services or tests;
 
