@@ -16,11 +16,15 @@ How to use:
 
 Install smartFactory using bower or npm:
 
-`bower install angular-smartfactory`
+```sh
+bower install angular-smartfactory
+```
 
 or 
 
-`npm install angular-smartfactory`
+```sh
+npm install angular-smartfactory
+```
 
 
 Add the smartFactory.js file to you page (if you are using the factories in your controllers or services) and/or to your karma conf files (it using for tests):
